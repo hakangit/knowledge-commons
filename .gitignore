@@ -1,0 +1,8 @@
+/knowledge-commons
+/.env
+/.idea/
+/.vscode/
+*.log
+*.db
+*.db-shm
+*.db-wal

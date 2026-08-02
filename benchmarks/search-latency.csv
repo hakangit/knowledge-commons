@@ -1,0 +1,6 @@
+scope,strategy,metric,value_ms,runs,corpus_documents,corpus_chunks,ranking,authorization,machine,runtime
+engine,Go linear scan,median ns/op,0.119585,5,579,8430,no,no,Apple M4 Pro,Go 1.26.5
+engine,SQLite FTS5 + BM25,median ns/op,0.126132,5,579,8430,yes,visibility filter,Apple M4 Pro,Go 1.26.5
+engine,SQLite LIKE,median ns/op,1.886743,5,579,8430,no,visibility filter,Apple M4 Pro,Go 1.26.5
+deployed,Authenticated FTS5 search,p50,23.500000,30,579,8422,yes,remote identity provider,deployed environment,n/a
+deployed,Authenticated FTS5 search,p95,27.100000,30,579,8422,yes,remote identity provider,deployed environment,n/a

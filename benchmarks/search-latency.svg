@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img" aria-labelledby="title description">
+  <title id="title">Knowledge Commons search latency comparison</title>
+  <desc id="description">A logarithmic dot plot. A Go linear scan takes 0.120 milliseconds, SQLite FTS5 with BM25 takes 0.126 milliseconds, SQLite LIKE takes 1.887 milliseconds, and the full authenticated deployed path takes 23.5 milliseconds at p50 and 27.1 milliseconds at p95.</desc>
+  <style>
+    .background { fill: #ffffff; }
+    .title { font: 600 28px system-ui, sans-serif; fill: #172033; }
+    .subtitle, .axis, .note { font: 400 14px system-ui, sans-serif; fill: #526077; }
+    .group { font: 600 14px system-ui, sans-serif; fill: #172033; letter-spacing: .04em; }
+    .label { font: 500 16px system-ui, sans-serif; fill: #172033; }
+    .value { font: 600 15px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #172033; }
+    .grid { stroke: #d9deea; stroke-width: 1; }
+    .separator { stroke: #c6ccda; stroke-width: 1; }
+    .alternative { fill: #7b879d; }
+    .fts { fill: #1f6feb; }
+    .live { fill: #16875d; }
+    .range { stroke: #16875d; stroke-width: 4; stroke-linecap: round; }
+    @media (prefers-color-scheme: dark) {
+      .background { fill: #0d1117; }
+      .title, .group, .label, .value { fill: #ecf2ff; }
+      .subtitle, .axis, .note { fill: #aebbd0; }
+      .grid { stroke: #39445a; }
+      .separator { stroke: #4b5870; }
+      .alternative { fill: #9aa8bf; }
+      .fts { fill: #58a6ff; }
+      .live { fill: #3fb950; }
+      .range { stroke: #3fb950; }
+    }
+  </style>
+
+  <rect class="background" width="1000" height="560"/>
+
+  <text class="title" x="40" y="48">Search latency: alternatives and the deployed path</text>
+  <text class="subtitle" x="40" y="75">Lower is better · milliseconds per lookup · logarithmic horizontal scale</text>
+
+  <text class="group" x="40" y="130">ENGINE-ONLY · PUBLIC REPRESENTATIVE CORPUS</text>
+  <text class="label" x="40" y="181">Go scan, no ranking</text>
+  <text class="label" x="40" y="241">SQLite FTS5 + BM25</text>
+  <text class="label" x="40" y="301">SQLite LIKE, no ranking</text>
+
+  <line class="separator" x1="40" y1="345" x2="940" y2="345"/>
+  <text class="group" x="40" y="390">FULL DEPLOYED PATH · LIVE CORPUS</text>
+  <text class="label" x="40" y="441">Authenticated search</text>
+
+  <line class="grid" x1="300" y1="105" x2="300" y2="470"/>
+  <line class="grid" x1="500" y1="105" x2="500" y2="470"/>
+  <line class="grid" x1="700" y1="105" x2="700" y2="470"/>
+  <line class="grid" x1="900" y1="105" x2="900" y2="470"/>
+  <text class="axis" x="300" y="495" text-anchor="middle">0.1 ms</text>
+  <text class="axis" x="500" y="495" text-anchor="middle">1 ms</text>
+  <text class="axis" x="700" y="495" text-anchor="middle">10 ms</text>
+  <text class="axis" x="900" y="495" text-anchor="middle">100 ms</text>
+
+  <circle class="alternative" cx="318" cy="176" r="8"/>
+  <text class="value" x="339" y="181">0.120 ms</text>
+  <circle class="fts" cx="323" cy="236" r="9"/>
+  <text class="value" x="344" y="241">0.126 ms</text>
+  <circle class="alternative" cx="555" cy="296" r="8"/>
+  <text class="value" x="576" y="301">1.887 ms</text>
+
+  <line class="range" x1="774" y1="436" x2="787" y2="436"/>
+  <circle class="live" cx="774" cy="436" r="9"/>
+  <line class="range" x1="787" y1="426" x2="787" y2="446"/>
+  <text class="value" x="805" y="432">23.5 ms p50</text>
+  <text class="note" x="805" y="453">27.1 ms p95</text>
+
+  <text class="note" x="40" y="523">Engine: 579 generated documents / 8,430 chunks; median of 5 × 1 s runs.</text>
+  <text class="note" x="40" y="546">Live: 30 requests including network, reverse proxy, remote authorization, SQLite, and JSON.</text>
+</svg>
